@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:pages="clr-namespace:Taskmanager.Mobile.Views.Pages"
+                xmlns:viewModel="clr-namespace:Taskmanager.Mobile.ViewModels.RegistroDeHoras.Cronometro"
+                xmlns:controls="clr-namespace:Taskmanager.Mobile.Controls"
+                x:Class="Taskmanager.Mobile.Views.Pages.RegistroDeHoras.Cronometro.RegistroDeHorasCronometroPage"
+                Title="{Binding Title}">
+    
+    <pages:BasePage.BindingContext>
+        <viewModel:RegistroDeHorasCronometroViewModel></viewModel:RegistroDeHorasCronometroViewModel>
+    </pages:BasePage.BindingContext>
+    
+    <pages:BasePage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <StackLayout BackgroundColor="{StaticResource Primary}">
+                    <Label Text="{Binding RunningTotal, StringFormat='{}{0:h\\:mm\\:ss}'}"
+                        FontSize="50" HorizontalTextAlignment="Center"
+                        TextColor="White" />
+
+                    <StackLayout Padding="16">
+
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <controls:InputTextEdit  />
+                            <controls:InputTextEdit  />
+                        </StackLayout>
+
+                        <controls:InputTextEdit />
+
+                    </StackLayout>
+                </StackLayout>
+                
+            </Grid>
+
+            <StackLayout Grid.Row="1" Padding="24" BackgroundColor="{StaticResource Primary}">
+                <Button Text="{Binding DescricaoButtonInitTask}"
+                        Command="{Binding InitTaskOrStopTaskCommand}"
+                        Style="{StaticResource defaultSaveButton}" />
+            </StackLayout>
+        </Grid>
+    </pages:BasePage.Content>
+</pages:BasePage>
