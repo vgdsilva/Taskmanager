@@ -8,6 +8,21 @@
     <Application.Resources>
         <ResourceDictionary>
             <Color x:Key="Primary">#2196F3</Color>
+            
+            <Color x:Key="ColorPrimary">#448AFF</Color>
+            <Color x:Key="ColorWhite">#FFFFFF</Color>
+            <Color x:Key="ColorWhite100">#FDFDFD</Color>
+            <Color x:Key="ColorWhite80">#F8F8F8</Color>
+            <Color x:Key="ColorDarkGray">#212121</Color>
+            <Color x:Key="ColorGray700">#666666</Color>
+            <Color x:Key="ColorGray500">#949494</Color>
+            <Color x:Key="ColorGray100">#E0E0E0</Color>
+            <Color x:Key="ColorGreen300">#00B37E</Color>
+            
+            
+            
+            
+            
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="White"></Setter>
                 <Setter Property="VisualStateManager.VisualStateGroups">
