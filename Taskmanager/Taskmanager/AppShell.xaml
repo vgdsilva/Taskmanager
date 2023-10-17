@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:local="clr-namespace:Taskmanager.Views"
-       xmlns:Config="clr-namespace:Taskmanager.Views.Configuracoes"
        xmlns:Dashboard="clr-namespace:Taskmanager.Views.Dashboard"
-       xmlns:Exportar="clr-namespace:Taskmanager.Views.Exportar"
        Title="Taskmanager"
        x:Class="Taskmanager.AppShell">
 
@@ -28,9 +25,7 @@
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent Title="Dashboard" Icon="icon_about.png" ContentTemplate="{DataTemplate Dashboard:DashboardPage}" />
-        <ShellContent Title="Exportar" Icon="icon_feed.png" ContentTemplate="{DataTemplate Exportar:ExportarPage}" />
-        <ShellContent Title="Configurações" Icon="icon_feed.png" ContentTemplate="{DataTemplate Config:ConfiguracaoPage}" />
+        <ShellContent ContentTemplate="{DataTemplate Dashboard:DashboardPage}" />
     </TabBar>
 
 

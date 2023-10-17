@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Taskmanager.Controls.FloatingMenuButton"
+             x:Name="root"
+             AbsoluteLayout.LayoutBounds="1,1,-1,-1"
+             AbsoluteLayout.LayoutFlags="PositionProportional"
+             Margin="0,0,29,22">
+
+    <Frame x:Name="Button"
+           CornerRadius="25"
+           HasShadow="False"
+           Padding="16"
+           HorizontalOptions="End"
+           VerticalOptions="End"
+           BackgroundColor="{Binding MainButtonBackgroundColor  }"
+           Margin="0"
+           BindingContext="{x:Reference root}">
+        <StackLayout Orientation="Horizontal"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     Padding="0" >
+            <Label x:Name="Icon"
+                   Text="{Binding MainButtonIcon}"
+                   TextColor="{Binding MainButtonForegroundColor}"
+                   FontSize="16"
+                   Scale="1.3"
+                   BindingContext="{x:Reference root}" />
+            <Label x:Name="Text"
+                   Text="{Binding MainButtonText}"
+                   TextColor="{Binding MainButtonForegroundColor}"
+                   IsVisible="false"
+                   FontFamily="Quicksand-Regular"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   FontSize="16"
+                   FontAttributes="None"
+                   BindingContext="{x:Reference root}" />
+        </StackLayout>
+    </Frame>
+
+</StackLayout>

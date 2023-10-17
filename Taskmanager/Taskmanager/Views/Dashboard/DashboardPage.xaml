@@ -1,20 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:controls="clr-namespace:Taskmanager.Controls"
+             xmlns:viewModel="clr-namespace:Taskmanager.ViewModels.Dashboard"
              x:Class="Taskmanager.Views.Dashboard.DashboardPage"
-             BackgroundColor="{StaticResource ColorWhite80}">
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="{StaticResource ColorWhite80}"
+             Title="Taskmanager">
+
+    <ContentPage.BindingContext>
+        <viewModel:DashboardViewModel />
+    </ContentPage.BindingContext>
+    
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout BackgroundColor="{StaticResource ColorWhite}" Padding="16">
-                <Button Text="Adicionar Novo Registro"
-                        TextColor="{StaticResource ColorWhite}"
-                        FontSize="Medium"
-                        FontAttributes="Bold"
-                        BackgroundColor="{StaticResource ColorPrimary}"
-                        BorderColor="{StaticResource ColorPrimary}"
-                        HorizontalOptions="FillAndExpand" 
-                        HeightRequest="55"/>
-            </StackLayout>
-        </ScrollView>
+        <AbsoluteLayout>
+            <ScrollView VerticalOptions="Fill">
+                
+            </ScrollView>
+
+            <controls:FloatingMenuButton MainButtonBackgroundColor="{StaticResource ColorPrimary}"
+                                         MainButtonText="Nova Tarefa"
+                                         Command="{Binding AddNewTaskCommand}"/>
+        </AbsoluteLayout>
+        
     </ContentPage.Content>
 </ContentPage>
