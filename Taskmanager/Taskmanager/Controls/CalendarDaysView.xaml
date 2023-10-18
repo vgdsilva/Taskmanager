@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<StackLayout xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:Taskmanager.Models.Controls"
+             x:Name="calendar"
+             x:Class="Taskmanager.Controls.CalendarDaysView"
+             Spacing="24">
+
+    <StackLayout>
+        <Frame HasShadow="False" BorderColor="#EFEFEF" Margin="0" Padding="0" HeightRequest="55">
+            <Grid>
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="55"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="55"/>
+                </Grid.ColumnDefinitions>
+
+                <Frame Grid.Column="0" BorderColor="#EFEFEF" Padding="0" Margin="0" HasShadow="False" >
+                    <Button Text="N" FontAttributes="Bold" Command="{Binding Source={x:Reference calendar}, Path=PreviousMonthCommand}" />
+                </Frame>
+
+                <Label Grid.Column="1" 
+                       Text="{Binding Source={x:Reference calendar}, Path=SelectedDate, StringFormat='{0:MMMM yyyy}'}" 
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       HorizontalOptions="CenterAndExpand" 
+                       VerticalOptions="Center"/>
+
+                <Frame Grid.Column="2" BorderColor="#EFEFEF" Padding="0" Margin="0" HasShadow="False">
+                    <Button Text="N" FontAttributes="Bold" Command="{Binding Source={x:Reference calendar}, Path=NextMonthCommand}" />
+                </Frame>
+            </Grid>
+        </Frame>
+    </StackLayout>
+    
+    <CollectionView ItemsSource="{Binding Source={x:Reference calendar}, Path=Dates}" HorizontalOptions="FillAndExpand" HeightRequest="100">
+        <CollectionView.ItemsLayout>
+            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="5"/>
+        </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+            <DataTemplate x:DataType="models:CalendarModel">
+                <Frame HeightRequest="80" WidthRequest="38" Padding="16" CornerRadius="15" HasShadow="False">
+                    <StackLayout Orientation="Vertical" Spacing="16" VerticalOptions="Center">
+                        <Label Text="{Binding Date, StringFormat='{0:ddd}'}" 
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center"
+                               TextColor="{StaticResource ColorDarkGray}">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsCurrentDate}" Value="True">
+                                    <Setter Property="TextColor" Value="{StaticResource ColorWhite}"></Setter>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsCurrentDate}" Value="False">
+                                    <Setter Property="TextColor" Value="{StaticResource ColorDarkGray}"></Setter>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+
+                        <Label Text="{Binding Date, StringFormat='{0:dd}'}" 
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center"
+                               TextColor="{StaticResource ColorDarkGray}">
+                            <Label.Triggers>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsCurrentDate}" Value="True">
+                                    <Setter Property="TextColor" Value="{StaticResource ColorWhite}"></Setter>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Label" Binding="{Binding IsCurrentDate}" Value="False">
+                                    <Setter Property="TextColor" Value="{StaticResource ColorDarkGray}"></Setter>
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
+                    </StackLayout>
+                    <Frame.Triggers>
+                        <DataTrigger TargetType="Frame" Binding="{Binding IsCurrentDate}" Value="True">
+                            <Setter Property="BackgroundColor" Value="{StaticResource ColorPrimary}"></Setter>
+                        </DataTrigger>
+                        
+                        <DataTrigger TargetType="Frame" Binding="{Binding IsCurrentDate}" Value="False">
+                            <Setter Property="BackgroundColor" Value="{StaticResource ColorWhite}"></Setter>
+                        </DataTrigger>
+                        
+                    </Frame.Triggers>
+                    
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Source={x:Reference calendar}, Path=CurrentDateCommand}" CommandParameter="{Binding .}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</StackLayout>

@@ -15,10 +15,10 @@
     
     <ContentPage.Content>
         <AbsoluteLayout>
-            <ScrollView VerticalOptions="Fill">
-                
-            </ScrollView>
-
+            <StackLayout Padding="16" Spacing="16" BackgroundColor="{StaticResource ColorWhite}" >
+                <controls:CalendarDaysView />
+            </StackLayout>
+            
             <controls:FloatingMenuButton MainButtonBackgroundColor="{StaticResource ColorPrimary}"
                                          MainButtonText="Nova Tarefa"
                                          Command="{Binding AddNewTaskCommand}"/>

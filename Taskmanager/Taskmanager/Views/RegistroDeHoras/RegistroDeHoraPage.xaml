@@ -46,6 +46,7 @@
                         VerticalOptions="Fill" 
                         HorizontalOptions="Center" 
                         WidthRequest="100" 
+                        IsVisible="False"
                         />
             </StackLayout>
 
@@ -60,7 +61,8 @@
                     <Button Text="Cancelar" 
                             TextColor="White" 
                             BackgroundColor="#FD5B72" 
-                            FontAttributes="Bold" />
+                            FontAttributes="Bold"
+                            Command="{Binding ClosePageCommand}"/>
                 </StackLayout>
             </StackLayout>
         </Grid>

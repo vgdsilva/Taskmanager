@@ -4,6 +4,7 @@ using System;
 using System.Timers;
 using Taskmanager.Models.RegistroDeHoras;
 using Taskmanager.ViewModels.RegistroDeHoras.Controller;
+using Xamarin.Forms;
 
 namespace Taskmanager.ViewModels.RegistroDeHoras
 {
@@ -61,6 +62,12 @@ namespace Taskmanager.ViewModels.RegistroDeHoras
             }
 
             IsClockedIn = !IsClockedIn;
+        }
+
+        [RelayCommand]
+        private async void ClosePage()
+        {
+            await Shell.Current.GoToAsync("..");
         }
     }
 }
